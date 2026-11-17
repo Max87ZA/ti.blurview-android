@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "ti.blurview.module-release-38:/interpolator-v21/mtrl_linear_out_slow_in.xml",
+        "source": "ti.blurview.module-material-1.6.1-32:/interpolator-v21/mtrl_linear_out_slow_in.xml"
+    },
+    {
+        "merged": "ti.blurview.module-release-38:/interpolator-v21/mtrl_fast_out_linear_in.xml",
+        "source": "ti.blurview.module-material-1.6.1-32:/interpolator-v21/mtrl_fast_out_linear_in.xml"
+    },
+    {
+        "merged": "ti.blurview.module-release-38:/interpolator-v21/mtrl_fast_out_slow_in.xml",
+        "source": "ti.blurview.module-material-1.6.1-32:/interpolator-v21/mtrl_fast_out_slow_in.xml"
+    }
+]

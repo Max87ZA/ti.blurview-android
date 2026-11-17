@@ -1,8 +1,18 @@
 repositories {
-	maven { url 'https://jcenter.bintray.com/' }
-
+	// maven { url 'https://jcenter.bintray.com/' }
+	mavenCentral()
+			maven { url 'https://jitpack.io' }
 }
-
+android {
+	compileOptions {
+    	sourceCompatibility JavaVersion.VERSION_11
+    	targetCompatibility JavaVersion.VERSION_11
+	}
+	kotlinOptions {
+	    jvmTarget = "11"
+	}
+}
 dependencies {
-	implementation 'com.github.mmin18:realtimeblurview:1.2.1'
+	// implementation 'com.github.mmin18:realtimeblurview:f54dc3c34d'
+	implementation 'com.github.mmin18:RealtimeBlurView:9ff54ea509'
 }

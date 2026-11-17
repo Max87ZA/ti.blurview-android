@@ -1,0 +1,36 @@
+{
+    "logs": [
+        {
+            "outputFile": "ti.blurview.module-release-38:/values-v27/values-v27.xml",
+            "map": [
+                {
+                    "source": "/Users/Max87/.gradle/caches/transforms-3/bf4cd1f6ad5881be0f4c230e5803881d/transformed/titanium-12.6.3/res/values-v27/values-v27.xml",
+                    "from": {
+                        "startLines": "2,6,10",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,261,488",
+                        "endLines": "5,9,18",
+                        "endColumns": "9,9,9",
+                        "endOffsets": "256,483,1050"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "ti.blurview.module-mergeReleaseResources-36:/values-v27/values-v27.xml",
+            "map": [
+                {
+                    "source": "/Users/Max87/.gradle/caches/transforms-3/bf4cd1f6ad5881be0f4c230e5803881d/transformed/titanium-12.6.3/res/values-v27/values-v27.xml",
+                    "from": {
+                        "startLines": "2,6,10",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,261,488",
+                        "endLines": "5,9,18",
+                        "endColumns": "9,9,9",
+                        "endOffsets": "256,483,1050"
+                    }
+                }
+            ]
+        }
+    ]
+}

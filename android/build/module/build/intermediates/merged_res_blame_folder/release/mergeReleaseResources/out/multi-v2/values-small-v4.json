@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "ti.blurview.module-release-38:/values-small-v4/values-small-v4.xml",
+            "map": [
+                {
+                    "source": "/Users/Max87/.gradle/caches/transforms-3/ef0f136245063418406c48ecce0884e0/transformed/material-1.6.1/res/values-small-v4/values-small-v4.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,128,198,270",
+                        "endColumns": "72,69,71,69",
+                        "endOffsets": "123,193,265,335"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "ti.blurview.module-mergeReleaseResources-36:/values-small-v4/values-small-v4.xml",
+            "map": [
+                {
+                    "source": "/Users/Max87/.gradle/caches/transforms-3/ef0f136245063418406c48ecce0884e0/transformed/material-1.6.1/res/values-small-v4/values-small-v4.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,128,198,270",
+                        "endColumns": "72,69,71,69",
+                        "endOffsets": "123,193,265,335"
+                    }
+                }
+            ]
+        }
+    ]
+}

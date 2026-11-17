@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "ti.blurview.module-release-38:/color-night-v8/material_timepicker_modebutton_tint.xml",
+        "source": "ti.blurview.module-material-1.6.1-32:/color-night-v8/material_timepicker_modebutton_tint.xml"
+    },
+    {
+        "merged": "ti.blurview.module-release-38:/color-night-v8/material_timepicker_clockface.xml",
+        "source": "ti.blurview.module-material-1.6.1-32:/color-night-v8/material_timepicker_clockface.xml"
+    },
+    {
+        "merged": "ti.blurview.module-release-38:/color-night-v8/material_timepicker_button_stroke.xml",
+        "source": "ti.blurview.module-material-1.6.1-32:/color-night-v8/material_timepicker_button_stroke.xml"
+    }
+]
