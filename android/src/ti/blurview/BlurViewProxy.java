@@ -11,13 +11,13 @@ import android.app.Activity;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.FrameLayout;
 
 import com.github.mmin18.widget.RealtimeBlurView;
 
 import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.kroll.common.TiConfig;
+import org.appcelerator.titanium.TiApplication;
 import org.appcelerator.titanium.proxy.TiViewProxy;
 import org.appcelerator.titanium.util.TiConvert;
 import org.appcelerator.titanium.view.TiUIView;
@@ -53,7 +53,10 @@ public class BlurViewProxy extends TiViewProxy {
             blurRadius = TiConvert.toInt(options.get("blurRadius"), 2);
         }
         if (options.containsKey("backgroundColor")) {
-            col = TiConvert.toColor(TiConvert.toString(options.get("backgroundColor"), "#88000000"));
+            col = TiConvert.toColor(
+                    TiConvert.toString(options.get("backgroundColor"), "#88000000"),
+                    TiApplication.getAppRootOrCurrentActivity()
+            );
         }
     }
 
@@ -84,17 +87,17 @@ public class BlurViewProxy extends TiViewProxy {
             int resId_viewHolder;
             int resIdPublish;
 
-            resId_viewHolder = resources.getIdentifier("layout_main", "layout", packageName);
+            resId_viewHolder = resources.getIdentifier("layout_blurview", "layout", packageName);
             resIdPublish = resources.getIdentifier("blurLayout", "id", packageName);
 
             LayoutInflater inflater = LayoutInflater.from(proxy.getActivity());
             viewWrapper = inflater.inflate(resId_viewHolder, null);
             blurLayout = viewWrapper.findViewById(resIdPublish);
 
-            if (blurRadius != -1) {
+            if (blurRadius != -1 && blurLayout != null) {
                 blurLayout.setBlurRadius(blurRadius);
             }
-            if (col != -1) {
+            if (col != -1 && blurLayout != null) {
                 blurLayout.setOverlayColor(col);
             }
 

@@ -1,21 +1,14 @@
 # Ti.Blurview
-## Android BlurView module for Appcelerator Titanium
+## Android BlurView module for Titanium SDK
 
 <span class="badge-buymeacoffee"><a href="https://www.buymeacoffee.com/miga" title="donate"><img src="https://img.shields.io/badge/buy%20me%20a%20coke-donate-orange.svg" alt="Buy Me A Coke donate button" /></a></span>
 
 <img src="screen.gif"/><br/>
 
-Simple Android BlurView module for Appcelerator Titanium. Based on: https://github.com/mmin18/RealtimeBlurView
+Simple Android BlurView module for Titanium SDK. Based on: https://github.com/mmin18/RealtimeBlurView
 
 ### Usage
 
-add
-```
-repositories {
-	maven { url 'https://jitpack.io' }
-}
-```
-to your `build.gradle`. If you don't have one you can create it in `app/platform/android/build.gradle`
 
 ```xml
 <modules>
