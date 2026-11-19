@@ -20,5 +20,5 @@ public final class BuildConfig {
   // Field from default config.
   public static final String TI_MODULE_NAME = "ti.blurview";
   // Field from default config.
-  public static final String TI_MODULE_VERSION = "1.2.2";
+  public static final String TI_MODULE_VERSION = "3.0.0";
 }

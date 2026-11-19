@@ -1,38 +1,38 @@
 [
     {
-        "merged": "ti.blurview.module-release-38:/color-v23/abc_btn_colored_text_material.xml",
-        "source": "ti.blurview.module-appcompat-1.4.1-9:/color-v23/abc_btn_colored_text_material.xml"
+        "merged": "ti.blurview.module-release-49:/color-v23/abc_btn_colored_borderless_text_material.xml",
+        "source": "ti.blurview.module-appcompat-1.7.0-32:/color-v23/abc_btn_colored_borderless_text_material.xml"
     },
     {
-        "merged": "ti.blurview.module-release-38:/color-v23/abc_btn_colored_borderless_text_material.xml",
-        "source": "ti.blurview.module-appcompat-1.4.1-9:/color-v23/abc_btn_colored_borderless_text_material.xml"
+        "merged": "ti.blurview.module-release-49:/color-v23/abc_tint_default.xml",
+        "source": "ti.blurview.module-appcompat-1.7.0-32:/color-v23/abc_tint_default.xml"
     },
     {
-        "merged": "ti.blurview.module-release-38:/color-v23/abc_tint_seek_thumb.xml",
-        "source": "ti.blurview.module-appcompat-1.4.1-9:/color-v23/abc_tint_seek_thumb.xml"
+        "merged": "ti.blurview.module-release-49:/color-v23/abc_tint_seek_thumb.xml",
+        "source": "ti.blurview.module-appcompat-1.7.0-32:/color-v23/abc_tint_seek_thumb.xml"
     },
     {
-        "merged": "ti.blurview.module-release-38:/color-v23/abc_tint_edittext.xml",
-        "source": "ti.blurview.module-appcompat-1.4.1-9:/color-v23/abc_tint_edittext.xml"
+        "merged": "ti.blurview.module-release-49:/color-v23/abc_tint_spinner.xml",
+        "source": "ti.blurview.module-appcompat-1.7.0-32:/color-v23/abc_tint_spinner.xml"
     },
     {
-        "merged": "ti.blurview.module-release-38:/color-v23/abc_tint_default.xml",
-        "source": "ti.blurview.module-appcompat-1.4.1-9:/color-v23/abc_tint_default.xml"
+        "merged": "ti.blurview.module-release-49:/color-v23/abc_btn_colored_text_material.xml",
+        "source": "ti.blurview.module-appcompat-1.7.0-32:/color-v23/abc_btn_colored_text_material.xml"
     },
     {
-        "merged": "ti.blurview.module-release-38:/color-v23/abc_tint_btn_checkable.xml",
-        "source": "ti.blurview.module-appcompat-1.4.1-9:/color-v23/abc_tint_btn_checkable.xml"
+        "merged": "ti.blurview.module-release-49:/color-v23/abc_color_highlight_material.xml",
+        "source": "ti.blurview.module-appcompat-1.7.0-32:/color-v23/abc_color_highlight_material.xml"
     },
     {
-        "merged": "ti.blurview.module-release-38:/color-v23/abc_color_highlight_material.xml",
-        "source": "ti.blurview.module-appcompat-1.4.1-9:/color-v23/abc_color_highlight_material.xml"
+        "merged": "ti.blurview.module-release-49:/color-v23/abc_tint_edittext.xml",
+        "source": "ti.blurview.module-appcompat-1.7.0-32:/color-v23/abc_tint_edittext.xml"
     },
     {
-        "merged": "ti.blurview.module-release-38:/color-v23/abc_tint_spinner.xml",
-        "source": "ti.blurview.module-appcompat-1.4.1-9:/color-v23/abc_tint_spinner.xml"
+        "merged": "ti.blurview.module-release-49:/color-v23/abc_tint_btn_checkable.xml",
+        "source": "ti.blurview.module-appcompat-1.7.0-32:/color-v23/abc_tint_btn_checkable.xml"
     },
     {
-        "merged": "ti.blurview.module-release-38:/color-v23/abc_tint_switch_track.xml",
-        "source": "ti.blurview.module-appcompat-1.4.1-9:/color-v23/abc_tint_switch_track.xml"
+        "merged": "ti.blurview.module-release-49:/color-v23/abc_tint_switch_track.xml",
+        "source": "ti.blurview.module-appcompat-1.7.0-32:/color-v23/abc_tint_switch_track.xml"
     }
 ]

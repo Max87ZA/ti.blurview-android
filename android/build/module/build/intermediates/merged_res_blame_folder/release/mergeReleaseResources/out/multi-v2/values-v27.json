@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "ti.blurview.module-release-38:/values-v27/values-v27.xml",
+            "outputFile": "ti.blurview.module-release-49:/values-v27/values-v27.xml",
             "map": [
                 {
-                    "source": "/Users/Max87/.gradle/caches/transforms-3/bf4cd1f6ad5881be0f4c230e5803881d/transformed/titanium-12.6.3/res/values-v27/values-v27.xml",
+                    "source": "/Users/Max87/.gradle/caches/9.4.0/transforms/31abbeb4c3bec216961bd25afbb8cd90/transformed/titanium-13.4.0/res/values-v27/values-v27.xml",
                     "from": {
                         "startLines": "2,6,10",
                         "startColumns": "4,4,4",
@@ -17,10 +17,10 @@
             ]
         },
         {
-            "outputFile": "ti.blurview.module-mergeReleaseResources-36:/values-v27/values-v27.xml",
+            "outputFile": "ti.blurview.module-mergeReleaseResources-47:/values-v27/values-v27.xml",
             "map": [
                 {
-                    "source": "/Users/Max87/.gradle/caches/transforms-3/bf4cd1f6ad5881be0f4c230e5803881d/transformed/titanium-12.6.3/res/values-v27/values-v27.xml",
+                    "source": "/Users/Max87/.gradle/caches/9.4.0/transforms/31abbeb4c3bec216961bd25afbb8cd90/transformed/titanium-13.4.0/res/values-v27/values-v27.xml",
                     "from": {
                         "startLines": "2,6,10",
                         "startColumns": "4,4,4",

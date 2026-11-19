@@ -1,14 +1,14 @@
 [
     {
-        "merged": "ti.blurview.module-release-38:/layout-land/material_clock_period_toggle_land.xml",
-        "source": "ti.blurview.module-material-1.6.1-32:/layout-land/material_clock_period_toggle_land.xml"
+        "merged": "ti.blurview.module-release-49:/layout-land/mtrl_picker_header_dialog.xml",
+        "source": "ti.blurview.module-material-1.12.0-25:/layout-land/mtrl_picker_header_dialog.xml"
     },
     {
-        "merged": "ti.blurview.module-release-38:/layout-land/material_timepicker.xml",
-        "source": "ti.blurview.module-material-1.6.1-32:/layout-land/material_timepicker.xml"
+        "merged": "ti.blurview.module-release-49:/layout-land/material_clock_period_toggle_land.xml",
+        "source": "ti.blurview.module-material-1.12.0-25:/layout-land/material_clock_period_toggle_land.xml"
     },
     {
-        "merged": "ti.blurview.module-release-38:/layout-land/mtrl_picker_header_dialog.xml",
-        "source": "ti.blurview.module-material-1.6.1-32:/layout-land/mtrl_picker_header_dialog.xml"
+        "merged": "ti.blurview.module-release-49:/layout-land/material_timepicker.xml",
+        "source": "ti.blurview.module-material-1.12.0-25:/layout-land/material_timepicker.xml"
     }
 ]

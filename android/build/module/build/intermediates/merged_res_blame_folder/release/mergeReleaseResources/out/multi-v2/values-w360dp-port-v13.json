@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "ti.blurview.module-release-38:/values-w360dp-port-v13/values-w360dp-port-v13.xml",
+            "outputFile": "ti.blurview.module-mergeReleaseResources-47:/values-w360dp-port-v13/values-w360dp-port-v13.xml",
             "map": [
                 {
-                    "source": "/Users/Max87/.gradle/caches/transforms-3/ef0f136245063418406c48ecce0884e0/transformed/material-1.6.1/res/values-w360dp-port-v13/values-w360dp-port-v13.xml",
+                    "source": "/Users/Max87/.gradle/caches/9.4.0/transforms/91b60489065942db107bc1c520dbea65/transformed/material-1.12.0/res/values-w360dp-port-v13/values-w360dp-port-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -16,10 +16,10 @@
             ]
         },
         {
-            "outputFile": "ti.blurview.module-mergeReleaseResources-36:/values-w360dp-port-v13/values-w360dp-port-v13.xml",
+            "outputFile": "ti.blurview.module-release-49:/values-w360dp-port-v13/values-w360dp-port-v13.xml",
             "map": [
                 {
-                    "source": "/Users/Max87/.gradle/caches/transforms-3/ef0f136245063418406c48ecce0884e0/transformed/material-1.6.1/res/values-w360dp-port-v13/values-w360dp-port-v13.xml",
+                    "source": "/Users/Max87/.gradle/caches/9.4.0/transforms/91b60489065942db107bc1c520dbea65/transformed/material-1.12.0/res/values-w360dp-port-v13/values-w360dp-port-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

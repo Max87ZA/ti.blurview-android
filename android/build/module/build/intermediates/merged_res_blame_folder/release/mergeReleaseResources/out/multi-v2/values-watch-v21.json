@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "ti.blurview.module-release-38:/values-watch-v21/values-watch-v21.xml",
+            "outputFile": "ti.blurview.module-mergeReleaseResources-47:/values-watch-v21/values-watch-v21.xml",
             "map": [
                 {
-                    "source": "/Users/Max87/.gradle/caches/transforms-3/42134f3044daacd220bec493b2207a2b/transformed/appcompat-1.4.1/res/values-watch-v21/values-watch-v21.xml",
+                    "source": "/Users/Max87/.gradle/caches/9.4.0/transforms/bd00b632446dab983b7d35f315b35990/transformed/appcompat-1.7.0/res/values-watch-v21/values-watch-v21.xml",
                     "from": {
                         "startLines": "2,6,10",
                         "startColumns": "4,4,4",
@@ -17,10 +17,10 @@
             ]
         },
         {
-            "outputFile": "ti.blurview.module-mergeReleaseResources-36:/values-watch-v21/values-watch-v21.xml",
+            "outputFile": "ti.blurview.module-release-49:/values-watch-v21/values-watch-v21.xml",
             "map": [
                 {
-                    "source": "/Users/Max87/.gradle/caches/transforms-3/42134f3044daacd220bec493b2207a2b/transformed/appcompat-1.4.1/res/values-watch-v21/values-watch-v21.xml",
+                    "source": "/Users/Max87/.gradle/caches/9.4.0/transforms/bd00b632446dab983b7d35f315b35990/transformed/appcompat-1.7.0/res/values-watch-v21/values-watch-v21.xml",
                     "from": {
                         "startLines": "2,6,10",
                         "startColumns": "4,4,4",

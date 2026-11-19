@@ -5,7 +5,7 @@
 
 <img src="screen.gif"/><br/>
 
-Simple Android BlurView module for Titanium SDK. Based on: https://github.com/mmin18/RealtimeBlurView
+Simple Android BlurView module for Titanium SDK. Static mode uses PixelCopy + RenderEffect; live mode uses https://github.com/Dimezis/BlurView
 
 ### Usage
 
@@ -28,8 +28,13 @@ var blurView = blur.createBlurView({});
 ### API
 
 <b>Properties:</b>
-* blurRadius (int)
-* backgroundColor (color)
+* blurRadius (number, dp, default 20)
+* backgroundColor (color, default `#88000000`): the tint drawn over the blur
+* indicator (boolean, default false): shows a native spinner centred in the view
+* indicatorColor (color, default: the theme's accent colour)
+* mode (string, creation only, default `"static"`)
+  * `"static"`: takes one snapshot of what is behind the view each time it becomes visible (e.g. `show()`), then blurs it. Cheap, made for loading overlays and dialogs. Blur via RenderEffect on Android 12+, a downscaled snapshot on Android 8–11, tint only on Android 7.
+  * `"live"`: re-blurs whenever the content behind changes ([Dimezis BlurView 2.0.6](https://github.com/Dimezis/BlurView)). Costs a full software redraw of the window on every frame that changes; use only when the content behind really moves.
 
 ### Example:
 

@@ -8,105 +8,246 @@
 package ti.blurview;
 
 import android.app.Activity;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
+import android.content.res.ColorStateList;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.RenderEffect;
+import android.graphics.Shader;
+import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.PixelCopy;
 import android.view.View;
-
-import com.github.mmin18.widget.RealtimeBlurView;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.Window;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import org.appcelerator.kroll.KrollDict;
+import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
-import org.appcelerator.kroll.common.TiConfig;
+import org.appcelerator.kroll.common.Log;
 import org.appcelerator.titanium.TiApplication;
+import org.appcelerator.titanium.TiC;
 import org.appcelerator.titanium.proxy.TiViewProxy;
 import org.appcelerator.titanium.util.TiConvert;
+import org.appcelerator.titanium.util.TiUIHelper;
 import org.appcelerator.titanium.view.TiUIView;
 
-@Kroll.proxy(creatableInModule = TiBlurViewModule.class)
-public class BlurViewProxy extends TiViewProxy {
-    // Standard Debugging variables
-    private static final String LCAT = "BlurViewProxy";
-    private static final boolean DBG = TiConfig.LOGD;
-    RealtimeBlurView blurLayout;
-    private int blurRadius = -1;
-    private int col = -1;
+import eightbitlab.com.blurview.BlurView;
 
-    // Constructor
+@Kroll.proxy(creatableInModule = TiBlurViewModule.class, propertyAccessors = { "blurRadius", "mode", "indicator", "indicatorColor" })
+public class BlurViewProxy extends TiViewProxy {
+    private static final String LCAT = "BlurViewProxy";
+    private static final int DEFAULT_TINT = 0x88000000; // the old layout default (#8000)
+    private static final float DEFAULT_RADIUS_DP = 20f; // the old layout default
+
     public BlurViewProxy() {
         super();
     }
 
     @Override
     public TiUIView createView(Activity activity) {
-        TiUIView view = new BlurView(this);
+        TiUIView view = new TiBlurView(this, activity);
         view.getLayoutParams().autoFillsHeight = true;
         view.getLayoutParams().autoFillsWidth = true;
         return view;
     }
 
-    // Handle creation options
-    @Override
-    public void handleCreationDict(KrollDict options) {
-        super.handleCreationDict(options);
+    private static class TiBlurView extends TiUIView {
+        private BlurView liveView;
+        private float liveRadius = 1f;
+        private SnapshotView staticView;
+        private final ProgressBar indicator;
 
-        if (options.containsKey("blurFactor")) {
-            blurRadius = TiConvert.toInt(options.get("blurRadius"), 2);
-        }
-        if (options.containsKey("backgroundColor")) {
-            col = TiConvert.toColor(
-                    TiConvert.toString(options.get("backgroundColor"), "#88000000"),
-                    TiApplication.getAppRootOrCurrentActivity()
-            );
-        }
-    }
-
-    @Kroll.setProperty
-    public void blurRadius(int factor) {
-        blurRadius = factor;
-        blurLayout.setBlurRadius(blurRadius);
-    }
-
-    @Kroll.setProperty
-    public void backgroundColor(int factor) {
-        col = factor;
-        blurLayout.setOverlayColor(col);
-    }
-
-    @Kroll.getProperty
-    public int blurRadius() {
-        return blurRadius;
-    }
-
-    private class BlurView extends TiUIView {
-        public BlurView(TiViewProxy proxy) {
+        TiBlurView(TiViewProxy proxy, Activity activity) {
             super(proxy);
-            String packageName = proxy.getActivity().getPackageName();
-            Resources resources = proxy.getActivity().getResources();
-            View viewWrapper;
-
-            int resId_viewHolder;
-            int resIdPublish;
-
-            resId_viewHolder = resources.getIdentifier("layout_blurview", "layout", packageName);
-            resIdPublish = resources.getIdentifier("blurLayout", "id", packageName);
-
-            LayoutInflater inflater = LayoutInflater.from(proxy.getActivity());
-            viewWrapper = inflater.inflate(resId_viewHolder, null);
-            blurLayout = viewWrapper.findViewById(resIdPublish);
-
-            if (blurRadius != -1 && blurLayout != null) {
-                blurLayout.setBlurRadius(blurRadius);
+            ViewGroup container;
+            // mode is read once at creation; changing it later has no effect
+            if ("live".equals(TiConvert.toString(proxy.getProperty("mode"), "static"))) {
+                liveView = new BlurView(activity) {
+                    @Override
+                    protected void onAttachedToWindow() {
+                        // Set up on the window we are actually in: the activity Titanium created us with
+                        // can be an older, stopped one (e.g. Alloy controllers built before tab.open()).
+                        View root = getRootView();
+                        setupWith((ViewGroup) root).setFrameClearDrawable(root.getBackground()).setBlurRadius(liveRadius);
+                        super.onAttachedToWindow();
+                    }
+                };
+                // BlurView's own children are left out of its snapshot, so the spinner is not blurred into it
+                container = liveView;
+            } else {
+                staticView = new SnapshotView(activity);
+                container = new FrameLayout(activity);
+                container.addView(staticView, new FrameLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             }
-            if (col != -1 && blurLayout != null) {
-                blurLayout.setOverlayColor(col);
-            }
-
-            setNativeView(viewWrapper);
+            indicator = new ProgressBar(activity); // default style: indeterminate circular spinner
+            indicator.setVisibility(View.GONE);
+            container.addView(indicator, new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
+            setNativeView(container);
         }
 
         @Override
         public void processProperties(KrollDict d) {
-            super.processProperties(d);
+            // backgroundColor is the blur tint; letting TiUIView paint it too would tint twice
+            KrollDict rest = new KrollDict(d);
+            rest.remove(TiC.PROPERTY_BACKGROUND_COLOR);
+            super.processProperties(rest);
+            setTint(d.get(TiC.PROPERTY_BACKGROUND_COLOR));
+            setRadius(d.get("blurRadius"));
+            setIndicator(d.get("indicator"));
+            setIndicatorColor(d.get("indicatorColor"));
+        }
+
+        @Override
+        public void propertyChanged(String key, Object oldValue, Object newValue, KrollProxy proxy) {
+            if (TiC.PROPERTY_BACKGROUND_COLOR.equals(key)) {
+                setTint(newValue);
+            } else if ("blurRadius".equals(key)) {
+                setRadius(newValue);
+            } else if ("indicator".equals(key)) {
+                setIndicator(newValue);
+            } else if ("indicatorColor".equals(key)) {
+                setIndicatorColor(newValue);
+            } else {
+                super.propertyChanged(key, oldValue, newValue, proxy);
+            }
+        }
+
+        private void setTint(Object value) {
+            int color = value == null ? DEFAULT_TINT : TiConvert.toColor(value, proxy.getActivity());
+            if (liveView != null) {
+                liveView.setOverlayColor(color);
+            } else {
+                staticView.setTint(color);
+            }
+        }
+
+        private void setIndicator(Object value) {
+            indicator.setVisibility(TiConvert.toBoolean(value, false) ? View.VISIBLE : View.GONE);
+        }
+
+        private void setIndicatorColor(Object value) {
+            // null keeps the theme's accent colour
+            indicator.setIndeterminateTintList(
+                value == null ? null : ColorStateList.valueOf(TiConvert.toColor(value, proxy.getActivity())));
+        }
+
+        private void setRadius(Object value) {
+            float px = TiUIHelper.getRawSize(TypedValue.COMPLEX_UNIT_DIP,
+                TiConvert.toFloat(value, DEFAULT_RADIUS_DP), proxy.getActivity());
+            if (liveView != null) {
+                // 2.0.x blurs a 1/6-size snapshot, and its RenderScript path accepts 1..25
+                liveRadius = Math.max(1f, Math.min(25f, px / 6f));
+                liveView.setBlurRadius(liveRadius); // kept in liveRadius because setupWith() on attach starts fresh
+            } else {
+                staticView.setRadius(px);
+            }
+        }
+    }
+
+    /**
+     * Takes one snapshot of the window area behind it each time it becomes visible, then shows it blurred.
+     * shortcut: content that changes behind a visible overlay is not re-captured; use mode "live" for that.
+     */
+    private static class SnapshotView extends ImageView {
+        private int tint = DEFAULT_TINT;
+        private float radiusPx;
+        private boolean shown;
+
+        // Runs after layout but before this frame is drawn, so the screen still shows the content without the overlay.
+        private final ViewTreeObserver.OnPreDrawListener captureOnce = new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                getViewTreeObserver().removeOnPreDrawListener(this);
+                capture();
+                return true;
+            }
+        };
+
+        SnapshotView(Activity activity) {
+            super(activity);
+            setScaleType(ScaleType.FIT_XY);
+        }
+
+        void setTint(int color) {
+            tint = color;
+            invalidate();
+        }
+
+        void setRadius(float px) {
+            radiusPx = px;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                setRenderEffect(px > 0 ? RenderEffect.createBlurEffect(px, px, Shader.TileMode.CLAMP) : null);
+            }
+        }
+
+        @Override
+        public void onVisibilityAggregated(boolean isVisible) {
+            super.onVisibilityAggregated(isVisible);
+            if (isVisible == shown) {
+                return;
+            }
+            shown = isVisible;
+            getViewTreeObserver().removeOnPreDrawListener(captureOnce);
+            if (isVisible) {
+                getViewTreeObserver().addOnPreDrawListener(captureOnce);
+            } else {
+                setImageDrawable(null); // free the snapshot while hidden
+            }
+        }
+
+        @Override
+        protected void onDetachedFromWindow() {
+            super.onDetachedFromWindow();
+            shown = false;
+            getViewTreeObserver().removeOnPreDrawListener(captureOnce);
+            setImageDrawable(null);
+        }
+
+        private void capture() {
+            int w = getWidth();
+            int h = getHeight();
+            // Not the activity we were created with: that can be an older, stopped one without a surface
+            // (Alloy builds a window's views before tab.open()/open() starts its activity).
+            // shortcut: assumes the visible blur is in the foreground activity; a blur under a dialog-style
+            // activity would get the tint only. On API 34+ PixelCopy.Request.ofWindow(View) is exact if ever needed.
+            Activity current = TiApplication.getAppCurrentActivity();
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O || current == null || w == 0 || h == 0) {
+                return; // PixelCopy from a Window needs API 26; below that only the tint shows
+            }
+            Window window = current.getWindow();
+            // API 31+ blurs with RenderEffect, so 1/4 size is enough. Older versions get their blur from the
+            // bilinear upscale of a tiny copy. shortcut: radius/2 is a guess, tune it on a real API < 31 device.
+            int scale = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S ? 4 : Math.max(4, (int) (radiusPx / 2));
+            Bitmap bitmap = Bitmap.createBitmap(Math.max(1, w / scale), Math.max(1, h / scale), Bitmap.Config.ARGB_8888);
+            int[] loc = new int[2];
+            getLocationInWindow(loc);
+            try {
+                PixelCopy.request(window, new Rect(loc[0], loc[1], loc[0] + w, loc[1] + h), bitmap, result -> {
+                    if (result != PixelCopy.SUCCESS) {
+                        Log.w(LCAT, "Snapshot failed (PixelCopy result " + result + "), showing tint only");
+                    } else if (shown) {
+                        setImageBitmap(bitmap);
+                    }
+                }, new Handler(Looper.getMainLooper()));
+            } catch (IllegalArgumentException e) {
+                Log.w(LCAT, "Snapshot failed: " + e.getMessage());
+            }
+        }
+
+        @Override
+        protected void onDraw(Canvas canvas) {
+            super.onDraw(canvas);
+            canvas.drawColor(tint);
         }
     }
 }

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "ti.blurview.module-release-38:/values-v16/values-v16.xml",
+            "outputFile": "ti.blurview.module-release-49:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/Users/Max87/.gradle/caches/transforms-3/42134f3044daacd220bec493b2207a2b/transformed/appcompat-1.4.1/res/values-v16/values-v16.xml",
+                    "source": "/Users/Max87/.gradle/caches/9.4.0/transforms/bd00b632446dab983b7d35f315b35990/transformed/appcompat-1.7.0/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -12,33 +12,15 @@
                         "endLines": "5",
                         "endColumns": "12",
                         "endOffsets": "223"
-                    },
-                    "to": {
-                        "startLines": "3",
-                        "startColumns": "4",
-                        "startOffsets": "121",
-                        "endLines": "6",
-                        "endColumns": "12",
-                        "endOffsets": "289"
-                    }
-                },
-                {
-                    "source": "/Users/Max87/.gradle/caches/transforms-3/23073bd023f59013f45dc0774a74b565/transformed/core-1.9.0/res/values-v16/values-v16.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "65",
-                        "endOffsets": "116"
                     }
                 }
             ]
         },
         {
-            "outputFile": "ti.blurview.module-mergeReleaseResources-36:/values-v16/values-v16.xml",
+            "outputFile": "ti.blurview.module-mergeReleaseResources-47:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/Users/Max87/.gradle/caches/transforms-3/42134f3044daacd220bec493b2207a2b/transformed/appcompat-1.4.1/res/values-v16/values-v16.xml",
+                    "source": "/Users/Max87/.gradle/caches/9.4.0/transforms/bd00b632446dab983b7d35f315b35990/transformed/appcompat-1.7.0/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -46,24 +28,6 @@
                         "endLines": "5",
                         "endColumns": "12",
                         "endOffsets": "223"
-                    },
-                    "to": {
-                        "startLines": "3",
-                        "startColumns": "4",
-                        "startOffsets": "121",
-                        "endLines": "6",
-                        "endColumns": "12",
-                        "endOffsets": "289"
-                    }
-                },
-                {
-                    "source": "/Users/Max87/.gradle/caches/transforms-3/23073bd023f59013f45dc0774a74b565/transformed/core-1.9.0/res/values-v16/values-v16.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "65",
-                        "endOffsets": "116"
                     }
                 }
             ]

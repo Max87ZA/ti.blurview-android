@@ -32,9 +32,6 @@ private:
 	// Methods -----------------------------------------------------------
 
 	// Dynamic property accessors ----------------------------------------
-	static void setter_backgroundColor(v8::Local<v8::Name> name, v8::Local<v8::Value> value, const v8::PropertyCallbackInfo<void>& info);
-	static void getter_blurRadius(v8::Local<v8::Name> name, const v8::PropertyCallbackInfo<v8::Value>& info);
-	static void setter_blurRadius(v8::Local<v8::Name> name, v8::Local<v8::Value> value, const v8::PropertyCallbackInfo<void>& info);
 
 };
 

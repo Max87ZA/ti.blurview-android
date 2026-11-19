@@ -1,0 +1,8 @@
+ti.blurview.module-pngs-0 /Users/Max87/Developer/modules/Ti.Blurkit/ti.blurview-android/android/build/module/build/generated/res/pngs/release
+ti.blurview.module-updated_navigation_xml-1 /Users/Max87/Developer/modules/Ti.Blurkit/ti.blurview-android/android/build/module/build/generated/updated_navigation_xml/release
+ti.blurview.module-mergeReleaseResources-2 /Users/Max87/Developer/modules/Ti.Blurkit/ti.blurview-android/android/build/module/build/intermediates/incremental/release/mergeReleaseResources/merged.dir
+ti.blurview.module-mergeReleaseResources-3 /Users/Max87/Developer/modules/Ti.Blurkit/ti.blurview-android/android/build/module/build/intermediates/incremental/release/mergeReleaseResources/stripped.dir
+ti.blurview.module-release-4 /Users/Max87/Developer/modules/Ti.Blurkit/ti.blurview-android/android/build/module/build/intermediates/merged_res/release/mergeReleaseResources
+ti.blurview.module-release-5 /Users/Max87/Developer/modules/Ti.Blurkit/ti.blurview-android/android/build/module/build/intermediates/packaged_res/release/packageReleaseResources
+ti.blurview.module-release-6 /Users/Max87/Developer/modules/Ti.Blurkit/ti.blurview-android/android/build/module/src/release/res
+ti.blurview.module-android-7 /Users/Max87/Developer/modules/Ti.Blurkit/ti.blurview-android/android/platform/android/res

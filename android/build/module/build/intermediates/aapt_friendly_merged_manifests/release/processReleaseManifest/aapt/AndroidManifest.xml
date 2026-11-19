@@ -3,6 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="ti.blurview" >
 
-    <uses-sdk android:minSdkVersion="21" />
+    <uses-sdk android:minSdkVersion="24" />
 
 </manifest>
